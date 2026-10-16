@@ -10,10 +10,10 @@ window.__BRAND__ = {
 
   // WhatsApp: 10 dígitos del número de México, sin espacios ni guiones.
   // Mientras esté vacío, los botones avisan que la demo falta configurar.
-  whatsapp: "",
+  whatsapp: "4921059504",
   waMensaje: "Hola, vi su página y quiero cotizar un minisplit",
 
-  telefonoVisible: "",                     // p. ej. "871 123 4567"
+  telefonoVisible: "492 105 9504",
   email: "",                               // p. ej. "contacto@zunoclima.mx"
   horario: "Lunes a sábado · 9:00 a 19:00 (por confirmar)",
 

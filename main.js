@@ -537,7 +537,12 @@
   }
 
   function initPay() {
-    var pkgs = $$(".pkg"); if (!pkgs.length) return;
+    // Paquete de $1 para probar cobros: solo aparece con ?prueba=1 en la dirección
+    if (/[?&]prueba=1\b/.test(location.search)) {
+      $$("[data-test]").forEach(function (p) { p.hidden = false; });
+      selectPkg("prueba");
+    }
+    var pkgs = $$(".pkg").filter(function (p) { return !p.hidden; }); if (!pkgs.length) return;
     pkgs.forEach(function (p, i) {
       p.addEventListener("click", function () { selectPkg(p.getAttribute("data-pkg")); });
       p.addEventListener("keydown", function (e) {

@@ -11,6 +11,8 @@ $CATALOGO = [
   'mantenimiento'  => ['titulo' => 'Mantenimiento preventivo de minisplit',   'precio' => 899.00],
   'instalacion-1t' => ['titulo' => 'Instalación de minisplit 1 tonelada',     'precio' => 2899.00],
   'anticipo'       => ['titulo' => 'Anticipo de instalación de minisplit',    'precio' => 1000.00],
+  // Pago de prueba de $1 (solo se muestra con ?prueba=1). Bórralo cuando ya no lo necesites.
+  'prueba'         => ['titulo' => 'Pago de prueba ZUNO Clima',               'precio' => 1.00],
 ];
 
 z_guard_post();

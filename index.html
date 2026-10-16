@@ -16,10 +16,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/hero.webp" media="(min-width: 861px)">
   <link rel="preload" as="image" href="assets/img/hero-movil.webp" media="(max-width: 860px)">
-  <link rel="stylesheet" href="styles.css?v=20261016b">
+  <link rel="stylesheet" href="styles.css?v=20261016c">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="config.js?v=20261016b" defer></script>
-  <script src="main.js?v=20261016b" defer></script>
+  <script src="config.js?v=20261016c" defer></script>
+  <script src="main.js?v=20261016c" defer></script>
 </head>
 <body>
 
@@ -555,6 +555,14 @@
         <span class="pkg__desc">Aparta tu fecha; se descuenta del total del servicio.</span>
         <span class="pkg__price">$1,000 <small>MXN</small></span>
         <span class="pkg__note">Precio de ejemplo</span>
+      </button>
+      <button class="pkg pkg--test" type="button" role="radio" aria-checked="false" data-pkg="prueba" data-precio="1" data-nombre="Pago de prueba" data-test hidden>
+        <span class="pkg__flag">Solo prueba</span>
+        <span class="pkg__icon"><svg class="i"><use href="#i-check"/></svg></span>
+        <span class="pkg__name">Pago de prueba</span>
+        <span class="pkg__desc">Para comprobar que los cobros llegan a la cuenta del negocio.</span>
+        <span class="pkg__price">$1 <small>MXN</small></span>
+        <span class="pkg__note">Visible solo con ?prueba=1</span>
       </button>
     </div>
 

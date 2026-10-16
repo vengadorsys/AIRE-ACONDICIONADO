@@ -354,6 +354,10 @@ h2 em { color: var(--jade); }
 .member__skills li { display: flex; gap: 12px; align-items: center; font-size: 15px; }
 .member__skills li::before { content: ""; flex: none; width: 18px; height: 1px; background: var(--jade); }
 .member--dev .member__skills li::before { background: var(--amber); }
+.member__dedication { margin: 0 0 26px; padding: 16px 18px; border-left: 2px solid var(--jade); border-radius: 0 14px 14px 0; background: rgba(62,230,166,.05); }
+.member--dev .member__dedication { border-left-color: var(--amber); background: rgba(242,180,90,.05); }
+.member__dedication .mono { display: block; margin-bottom: 6px; color: var(--dim); text-transform: uppercase; letter-spacing: .14em; font-size: 11px; }
+.member__dedication p { font: 400 19px/1.35 var(--f-serif); font-style: italic; color: var(--text); }
 .member__links { display: flex; gap: 10px; }
 .member__links a { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--line-2); transition: border-color .3s, background .3s, transform .3s var(--ease); }
 .member__links a:hover { border-color: var(--jade); background: rgba(62,230,166,.08); transform: translateY(-3px); }

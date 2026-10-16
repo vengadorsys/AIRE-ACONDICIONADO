@@ -323,7 +323,7 @@
       var tipo = tipoEl ? tipoEl.value : "Página web";
       var msg = form.mensaje.value.trim();
       var lines = [
-        "Hola ZUNO 👋 Quiero cotizar una página web.",
+        "Hola ZUNOO 👋 Quiero cotizar una página web.",
         "",
         "• Nombre: " + nombre
       ];

@@ -1,16 +1,15 @@
 <?php
 // setup.php — configurar las claves desde el navegador, sin tocar código.
-// Acceso: setup.php?t=<código de configuración> (el código vive en _admin.php,
-// que no se sube al repositorio). Las claves se guardan en la carpeta privada,
+// Acceso: setup.php?t=<código de configuración> (en _admin.php solo está su huella cifrada). Las claves se guardan en la carpeta privada,
 // fuera de public_html, y nunca se muestran.
 require __DIR__ . '/_core.php';
 header('Cache-Control: no-store');
 header('X-Robots-Tag: noindex');
 
 $admin = is_file(__DIR__ . '/_admin.php') ? include __DIR__ . '/_admin.php' : [];
-$token = is_array($admin) ? (string) ($admin['setup_token'] ?? '') : '';
+$hash  = is_array($admin) ? (string) ($admin['setup_hash'] ?? '') : '';
 $given = (string) ($_GET['t'] ?? $_POST['t'] ?? '');
-if ($token === '' || !hash_equals($token, $given)) { http_response_code(404); exit('No encontrado'); }
+if ($hash === '' || strlen($given) < 16 || z_rate('setup', 10, 60) !== '' || !password_verify($given, $hash)) { http_response_code(404); exit('No encontrado'); }
 
 function gemini_valid($k) {
   if (!function_exists('curl_init')) return false;

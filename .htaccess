@@ -1,7 +1,37 @@
-# ============================================================================
+# ZUNO Clima — servidor (Apache / LiteSpeed en Hostinger)
+DirectoryIndex index.html
+Options -Indexes
+
+# Siempre HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  # Nunca servir archivos internos
+  RewriteRule (^|/)\.git(/|$) - [F,L]
+  RewriteRule ^(privado|agencia-zuno)(/|$) - [F,L]
+</IfModule>
+
+# Archivos internos: utilidades, conocimiento del asistente, configuración y documentación
+<FilesMatch "^(_.*\.php|knowledge\.php|.*\.md|.*\.jsonl|.*\.csv|\.gitignore)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Subida del recibo: hasta 10 MB
+<IfModule mod_php.c>
+  php_value upload_max_filesize 12M
+  php_value post_max_size 13M
+</IfModule>
+
 # .htaccess for premium static websites — copy as `.htaccess` to project root.
 # Targets Apache (Hostinger default) and LiteSpeed.
-# ============================================================================
 #
 # What this does:
 # - HTML / JS / CSS / JSON: revalidate every visit (no stale code after deploy).
@@ -68,7 +98,6 @@
   AddType image/avif .avif
   AddType application/javascript .js
   AddType application/javascript .mjs
-  AddType application/wasm .wasm
   AddType text/css .css
   AddType application/json .json
   AddType font/woff2 .woff2
@@ -95,6 +124,3 @@
 #   RewriteCond %{REQUEST_FILENAME}.html -f
 #   RewriteRule ^(.+?)/?$ $1.html [L]
 # </IfModule>
-
-# ----- Block version-control metadata -----
-RedirectMatch 404 /\.git

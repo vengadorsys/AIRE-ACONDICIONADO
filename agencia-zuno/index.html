@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="es-MX" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ZUNO — Diseño y desarrollo web 100% en línea</title>
+  <meta name="description" content="Somos ZUNO, un dúo de diseño y programación web. Diseñamos y programamos tu sitio web, 100% en línea, para negocios en México y LatAm. Tu visión, nuestro código.">
+  <meta name="theme-color" content="#07090a">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ZUNO — Diseñamos y programamos tu sitio web">
+  <meta property="og:description" content="Dúo de diseño y desarrollo web. Tu visión, nuestro código.">
+  <meta property="og:image" content="assets/img/og-zuno.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261016c">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ZUNO",
+    "alternateName": "Zona de Utilidad, Navegación y Organización",
+    "slogan": "Tu visión, nuestro código",
+    "description": "Dúo de diseño y desarrollo web que trabaja 100% en línea.",
+    "logo": "assets/img/apple-touch-icon.png",
+    "areaServed": ["MX", "Latinoamérica"],
+    "contactPoint": [
+      {"@type": "ContactPoint", "contactType": "sales", "telephone": "+52-871-522-2154", "availableLanguage": "es"},
+      {"@type": "ContactPoint", "contactType": "customer support", "telephone": "+52-492-105-9504", "availableLanguage": "es"}
+    ],
+    "member": [
+      {"@type": "Person", "name": "Alan de Santiago", "jobTitle": "Diseño UI/UX y Frontend"},
+      {"@type": "Person", "name": "Gustavo Pérez", "jobTitle": "Desarrollo y parte técnica"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Living background -->
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="aura" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <!-- Splash -->
+  <div class="splash" aria-hidden="true">
+    <div class="splash__mark"></div>
+    <div class="splash__bar"><span></span></div>
+  </div>
+
+  <header class="nav" id="top">
+    <a class="nav__brand" href="#inicio" aria-label="ZUNO, inicio">
+      <span class="nav__emblem" aria-hidden="true"></span>
+      <span class="nav__word">ZUNO</span>
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#por-que">Por qué</a>
+      <a href="#historia">Historia</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn--sm btn--primary nav__cta magnetic" href="#contacto">Cotiza tu página</a>
+    <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <div class="drawer" aria-hidden="true">
+    <nav>
+      <a href="#por-que">Por qué ZUNO</a>
+      <a href="#historia">Nuestra historia</a>
+      <a href="#servicios">Lo que hacemos</a>
+      <a href="#equipo">Quiénes somos</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn--primary" href="#contacto">Cotiza tu página web</a>
+  </div>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="inicio">
+      <div class="hero__inner wrap">
+        <div class="hero__copy">
+          <p class="eyebrow reveal"><span class="dot"></span> Dúo de diseño y desarrollo web · 100% en línea</p>
+          <h1 class="hero__name" aria-label="ZUNO">
+            <span class="split" data-split>ZUNO</span>
+          </h1>
+          <p class="hero__title reveal">Diseñamos y programamos <em>tu sitio web.</em></p>
+          <p class="hero__slogan reveal"><span class="mono">//</span> Tu visión, nuestro código.</p>
+          <div class="hero__actions reveal">
+            <a class="btn btn--primary btn--lg magnetic" href="#contacto">
+              Cotiza tu página web
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="#servicios">Ver lo que hacemos</a>
+          </div>
+          <ul class="hero__chips reveal" aria-label="Datos rápidos">
+            <li>México y LatAm</li>
+            <li>Trato directo</li>
+            <li>Diseño + código</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="orbit orbit--1"></div>
+          <div class="orbit orbit--2"></div>
+          <div class="orbit orbit--3"><i></i></div>
+          <div class="emblem" data-tilt>
+            <div class="emblem__glow"></div>
+            <div class="emblem__mark"></div>
+            <div class="emblem__shine"></div>
+          </div>
+          <div class="hero__tag hero__tag--a"><span class="mono">figma</span> → diseño</div>
+          <div class="hero__tag hero__tag--b"><span class="mono">&lt;/&gt;</span> → código</div>
+        </div>
+      </div>
+      <a class="hero__scroll" href="#por-que" aria-label="Bajar a la siguiente sección"><span></span></a>
+    </section>
+
+    <!-- ================= ACRONYM STRIP ================= -->
+    <div class="strip" aria-label="ZUNO significa Zona de Utilidad, Navegación y Organización">
+      <div class="strip__track">
+        <span><b>Z</b>ona de <b>U</b>tilidad, <b>N</b>avegación y <b>O</b>rganización</span><i>✦</i>
+        <span>Tu visión, nuestro código</span><i>✦</i>
+        <span><b>Z</b>ona de <b>U</b>tilidad, <b>N</b>avegación y <b>O</b>rganización</span><i>✦</i>
+        <span>Tu visión, nuestro código</span><i>✦</i>
+        <span><b>Z</b>ona de <b>U</b>tilidad, <b>N</b>avegación y <b>O</b>rganización</span><i>✦</i>
+        <span>Tu visión, nuestro código</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ================= WHY ================= -->
+    <section class="section" id="por-que">
+      <div class="wrap">
+        <header class="head reveal">
+          <p class="kicker"><span class="mono">01</span> Por qué trabajar con nosotros</p>
+          <h2>Un equipo pequeño, <em>a propósito.</em></h2>
+          <p class="lead">Sin capas, sin agencia gigante, sin teléfono descompuesto. Solo dos personas que se hacen cargo de tu sitio de principio a fin.</p>
+        </header>
+        <div class="why">
+          <article class="card why__card reveal" data-spot>
+            <div class="why__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M8 14h20a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H18l-7 6v-6H8a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4z"/><path d="M34 20h6a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-2v5l-6-5h-6"/></svg>
+            </div>
+            <h3>Hablas directo con quien hace tu sitio</h3>
+            <p>Sin intermediarios ni vendedores. Tus ideas llegan sin filtro a quien diseña y a quien programa, y las respuestas también.</p>
+          </article>
+          <article class="card why__card reveal" data-spot>
+            <div class="why__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="5" y="9" width="17" height="30" rx="3"/><path d="M30 16l-5 8 5 8M38 16l5 8-5 8"/><path d="M9 16h9M9 21h6"/></svg>
+            </div>
+            <h3>Diseño y código en un mismo equipo</h3>
+            <p>Lo que se diseña es lo que se construye. Nada se pierde entre un estudio de diseño y otro de programación: es la misma mesa de trabajo.</p>
+          </article>
+          <article class="card why__card reveal" data-spot>
+            <div class="why__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M6 24h36M24 6c6 6 6 30 0 36M24 6c-6 6-6 30 0 36"/></svg>
+            </div>
+            <h3>100% en línea, estés donde estés</h3>
+            <p>Videollamadas, Figma compartido y un link de prueba para ver avances. Trabajamos con negocios de todo México y LatAm sin que salgas de tu oficina.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STORY ================= -->
+    <section class="section story" id="historia">
+      <div class="wrap story__grid">
+        <div class="story__copy reveal">
+          <p class="kicker"><span class="mono">02</span> Nuestra historia</p>
+          <h2>Dos mitades de un mismo <em>oficio.</em></h2>
+          <p>ZUNO nace de una idea simple: un buen sitio web necesita verse increíble <strong>y</strong> funcionar impecable. Casi siempre esas dos cosas las hacen equipos distintos, que no se hablan entre sí. Nosotros decidimos juntarlas.</p>
+          <p>Uno de nosotros piensa en cómo se ve, se lee y se siente cada pantalla. El otro se asegura de que todo cargue rápido, sea seguro y no falle. Trabajando juntos, cada decisión de diseño ya sabe cómo se va a programar, y cada línea de código respeta lo que se diseñó.</p>
+          <p>Por eso nuestro nombre es una promesa de trabajo: que tu sitio sea <em>útil</em>, fácil de <em>navegar</em> y esté bien <em>organizado</em>. Lo que nos diferencia es que con nosotros no hay intermediarios: hablas con las mismas dos personas desde la primera llamada hasta el lanzamiento.</p>
+        </div>
+        <div class="acro reveal" aria-label="Significado de ZUNO">
+          <div class="acro__row" data-spot><span class="acro__l">Z</span><span class="acro__w">ona</span><span class="acro__d">El espacio digital de tu negocio.</span></div>
+          <div class="acro__row" data-spot><span class="acro__l">U</span><span class="acro__w">tilidad</span><span class="acro__d">Cada sección tiene un propósito.</span></div>
+          <div class="acro__row" data-spot><span class="acro__l">N</span><span class="acro__w">avegación</span><span class="acro__d">Que tus clientes encuentren todo sin pensar.</span></div>
+          <div class="acro__row" data-spot><span class="acro__l">O</span><span class="acro__w">rganización</span><span class="acro__d">Contenido claro, código ordenado.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section class="section" id="servicios">
+      <div class="wrap">
+        <header class="head head--split reveal">
+          <div>
+            <p class="kicker"><span class="mono">03</span> Lo que hacemos</p>
+            <h2>Sitios hechos a la medida <em>de tu negocio.</em></h2>
+          </div>
+          <p class="lead">Cada proyecto se diseña desde cero y se programa para que cargue rápido, se vea perfecto en el celular y te ayude a conseguir clientes.</p>
+        </header>
+        <div class="services">
+          <article class="card svc svc--wide reveal" data-spot>
+            <span class="svc__n mono">/01</span>
+            <h3>Landing pages</h3>
+            <p>Una sola página enfocada en un objetivo: vender un producto, promocionar un servicio o captar contactos.</p>
+            <ul class="tags"><li>Diseño a medida</li><li>Botón a WhatsApp</li><li>Optimizada para celular</li></ul>
+            <div class="svc__art svc__art--landing" aria-hidden="true"><i></i><i></i><i></i></div>
+          </article>
+          <article class="card svc reveal" data-spot>
+            <span class="svc__n mono">/02</span>
+            <h3>Sitios para negocios</h3>
+            <p>Tu negocio completo en línea: quiénes son, qué ofrecen y cómo contactarlos, con varias secciones o páginas.</p>
+            <ul class="tags"><li>Varias páginas</li><li>SEO básico</li><li>Formulario de contacto</li></ul>
+          </article>
+          <article class="card svc reveal" data-spot>
+            <span class="svc__n mono">/03</span>
+            <h3>Tiendas en línea</h3>
+            <p>Catálogo, carrito y pagos para que vendas tus productos las 24 horas, fácil de administrar.</p>
+            <ul class="tags"><li>Catálogo</li><li>Carrito y pagos</li><li>Panel para administrar</li></ul>
+          </article>
+          <article class="card svc reveal" data-spot>
+            <span class="svc__n mono">/04</span>
+            <h3>Rediseño de páginas</h3>
+            <p>¿Tu sitio se ve viejo o no funciona bien en celular? Lo modernizamos conservando lo que sí te sirve.</p>
+            <ul class="tags"><li>Imagen actual</li><li>Más rápido</li><li>Responsive</li></ul>
+          </article>
+          <article class="card svc reveal" data-spot>
+            <span class="svc__n mono">/05</span>
+            <h3>Mantenimiento</h3>
+            <p>Nos encargamos de que tu sitio siga al día: cambios de contenido, actualizaciones, respaldos y ajustes.</p>
+            <ul class="tags"><li>Cambios de contenido</li><li>Actualizaciones</li><li>Soporte</li></ul>
+          </article>
+        </div>
+        <div class="mid-cta reveal">
+          <p>¿No sabes cuál necesitas? Cuéntanos de tu negocio y te recomendamos la mejor opción.</p>
+          <a class="btn btn--primary magnetic" href="#contacto">Cotiza tu página web</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TEAM ================= -->
+    <section class="section" id="equipo">
+      <div class="wrap">
+        <header class="head reveal">
+          <p class="kicker"><span class="mono">04</span> Quiénes somos</p>
+          <h2>Nosotros dos. <em>Diseño y código.</em></h2>
+          <p class="lead">Las personas con las que hablarás desde el primer mensaje hasta el lanzamiento.</p>
+        </header>
+        <div class="team">
+          <article class="member member--dev reveal" data-tilt-card data-spot>
+            <div class="member__photo member__photo--dev" aria-hidden="true">
+              <!-- Para usar foto real: <img src="assets/img/gustavo.webp" alt="Gustavo Pérez"> -->
+              <span class="member__initials">GP</span>
+              <span class="member__badge mono">app.js</span>
+            </div>
+            <div class="member__body">
+              <p class="member__role mono">Desarrollo · Parte técnica</p>
+              <h3>Gustavo Pérez</h3>
+              <p class="member__bio">Se encarga de que todo funcione: rápido, seguro y sin fallas. Convierte el diseño en un sitio sólido, lo conecta con lo que tu negocio necesita y lo deja listo para crecer.</p>
+              <ul class="member__skills">
+                <li>Desarrollo web a la medida</li>
+                <li>React y WordPress</li>
+                <li>Tiendas en línea e integraciones</li>
+                <li>Publicación, dominio y mantenimiento</li>
+              </ul>
+              <div class="member__links">
+                <a href="#" data-pending aria-label="GitHub de Gustavo Pérez" title="Próximamente"><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 8.4 22.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+                <a href="#" data-pending aria-label="LinkedIn de Gustavo Pérez" title="Próximamente"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <div class="handoff" aria-hidden="true"><span></span><b class="mono">⇄</b><span></span></div>
+
+          <article class="member reveal" data-tilt-card data-spot>
+            <div class="member__photo member__photo--design" aria-hidden="true">
+              <!-- Para usar foto real: <img src="assets/img/alan.webp" alt="Alan de Santiago"> -->
+              <span class="member__initials">AS</span>
+              <span class="member__badge mono">diseño.fig</span>
+            </div>
+            <div class="member__body">
+              <p class="member__role mono">UI/UX · Frontend</p>
+              <h3>Alan de Santiago</h3>
+              <p class="member__bio">Se encarga de que tu sitio se vea y se sienta increíble. Diseña cada pantalla en Figma pensando en tus clientes y después la convierte en una interfaz real, cuidando cada detalle.</p>
+              <ul class="member__skills">
+                <li>Diseño UI/UX en Figma</li>
+                <li>Identidad visual en la web</li>
+                <li>Frontend con HTML, CSS y JavaScript</li>
+                <li>Animaciones e interacciones</li>
+              </ul>
+              <div class="member__links">
+                <a href="#" data-pending aria-label="GitHub de Alan de Santiago" title="Próximamente"><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 8.4 22.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+                <a href="#" data-pending aria-label="LinkedIn de Alan de Santiago" title="Próximamente"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+                <a href="#" data-pending aria-label="Behance de Alan de Santiago" title="Próximamente"><svg viewBox="0 0 24 24"><path d="M8.2 11.3c.9-.4 1.5-1.2 1.5-2.4C9.7 6.6 8 6 6 6H1v12h5.2c2 0 4.1-1 4.1-3.4 0-1.4-.7-2.6-2.1-3.3zM3.6 8h2c.8 0 1.5.2 1.5 1.1S6.5 10.3 5.8 10.3H3.6zm2.3 7.9H3.6v-3.6H6c1 0 1.7.4 1.7 1.8 0 1.4-1 1.8-1.8 1.8zM15 7h5v1.3h-5zm2.6 3c-2.8 0-4.6 2-4.6 4.5 0 2.7 1.7 4.5 4.6 4.5 2.2 0 3.6-1 4.3-3.1h-2.2c-.3.8-1.1 1.2-2 1.2-1.5 0-2.2-.8-2.2-2.2H22c.2-2.8-1.4-4.9-4.4-4.9zm-2.1 3.5c.1-1.1.8-1.7 1.9-1.7 1.1 0 1.7.7 1.8 1.7z"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section class="section" id="proceso">
+      <div class="wrap">
+        <header class="head reveal">
+          <p class="kicker"><span class="mono">05</span> Cómo trabajamos a distancia</p>
+          <h2>Todo en línea. <em>Todo a la vista.</em></h2>
+          <p class="lead">Sabes en qué paso va tu sitio en todo momento, y lo ves crecer antes de que salga al público.</p>
+        </header>
+        <ol class="process">
+          <li class="step reveal">
+            <span class="step__n mono">01</span>
+            <h3>Propuesta y cotización</h3>
+            <p>Platicamos por videollamada o WhatsApp sobre tu negocio y lo que necesitas. Te enviamos una propuesta clara con alcance y precio.</p>
+            <p class="step__get"><span class="mono">recibes →</span> propuesta por escrito</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n mono">02</span>
+            <h3>Diseño en Figma con revisiones</h3>
+            <p>Diseñamos tu sitio y te compartimos el enlace de Figma. Comentas, ajustamos y avanzamos hasta que te encante.</p>
+            <p class="step__get"><span class="mono">recibes →</span> diseño navegable</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n mono">03</span>
+            <h3>Desarrollo con link de prueba</h3>
+            <p>Programamos tu sitio y te damos un link de prueba para que veas los avances en tu celular y computadora, en tiempo real.</p>
+            <p class="step__get"><span class="mono">recibes →</span> link de prueba</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n mono">04</span>
+            <h3>Lanzamiento y soporte</h3>
+            <p>Publicamos tu sitio con tu dominio, revisamos que todo funcione y te acompañamos después del lanzamiento.</p>
+            <p class="step__get"><span class="mono">recibes →</span> sitio en línea</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= TECH ================= -->
+    <section class="section tech" id="tecnologias">
+      <div class="wrap">
+        <header class="head head--center reveal">
+          <p class="kicker"><span class="mono">06</span> Tecnologías</p>
+          <h2>Las herramientas <em>con las que construimos.</em></h2>
+        </header>
+        <ul class="stack reveal" aria-label="Tecnologías">
+          <li data-spot><span class="stack__ic">Fi</span><b>Figma</b><small>Diseño y prototipos</small></li>
+          <li data-spot><span class="stack__ic">&lt;&gt;</span><b>HTML</b><small>Estructura</small></li>
+          <li data-spot><span class="stack__ic">{ }</span><b>CSS</b><small>Estilo y animación</small></li>
+          <li data-spot><span class="stack__ic">JS</span><b>JavaScript</b><small>Interacción</small></li>
+          <li data-spot><span class="stack__ic">⚛</span><b>React</b><small>Interfaces modernas</small></li>
+          <li data-spot><span class="stack__ic">W</span><b>WordPress</b><small>Sitios administrables</small></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section contact" id="contacto">
+      <div class="wrap contact__grid">
+        <div class="contact__copy reveal">
+          <p class="kicker"><span class="mono">07</span> Contacto</p>
+          <h2>Cuéntanos tu idea. <em>Nosotros la programamos.</em></h2>
+          <p class="lead">Escríbenos por WhatsApp o déjanos tus datos. Te respondemos personalmente, sin bots ni vendedores.</p>
+
+          <div class="channels">
+            <a class="channel magnetic" data-spot target="_blank" rel="noopener"
+               href="https://wa.me/528715222154?text=Hola%20ZUNO%20%F0%9F%91%8B%20Me%20interesa%20cotizar%20una%20p%C3%A1gina%20web%20para%20mi%20negocio.%20%C2%BFMe%20pueden%20dar%20informaci%C3%B3n%3F">
+              <span class="channel__ic"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.6L.3 23.7l6.3-1.6A11.8 11.8 0 0 0 20.5 3.5zM12 21.6c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.6zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.3-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg></span>
+              <span class="channel__txt"><small class="mono">Ventas · cotizaciones</small><b>871 522 2154</b></span>
+              <span class="channel__go" aria-hidden="true">↗</span>
+            </a>
+            <a class="channel magnetic" data-spot target="_blank" rel="noopener"
+               href="https://wa.me/524921059504?text=Hola%20ZUNO%2C%20tengo%20una%20consulta%20para%20administraci%C3%B3n.">
+              <span class="channel__ic"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.6L.3 23.7l6.3-1.6A11.8 11.8 0 0 0 20.5 3.5zM12 21.6c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.6zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.3-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg></span>
+              <span class="channel__txt"><small class="mono">Administración</small><b>492 105 9504</b></span>
+              <span class="channel__go" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="contact__note mono">100% remoto · México y LatAm · respondemos por WhatsApp</p>
+        </div>
+
+        <form class="form card reveal" id="quote" data-spot novalidate>
+          <h3>Cotiza tu página web</h3>
+          <p class="form__sub">Llena estos datos y se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+          <label class="field">
+            <span>Tu nombre</span>
+            <input name="nombre" type="text" autocomplete="name" required placeholder="¿Cómo te llamas?">
+          </label>
+          <label class="field">
+            <span>Tu negocio</span>
+            <input name="negocio" type="text" autocomplete="organization" placeholder="Nombre o giro de tu negocio">
+          </label>
+          <fieldset class="field">
+            <legend>¿Qué necesitas?</legend>
+            <div class="pills">
+              <label><input type="radio" name="tipo" value="Landing page" checked><span>Landing page</span></label>
+              <label><input type="radio" name="tipo" value="Sitio para negocio"><span>Sitio para negocio</span></label>
+              <label><input type="radio" name="tipo" value="Tienda en línea"><span>Tienda en línea</span></label>
+              <label><input type="radio" name="tipo" value="Rediseño"><span>Rediseño</span></label>
+              <label><input type="radio" name="tipo" value="Mantenimiento"><span>Mantenimiento</span></label>
+            </div>
+          </fieldset>
+          <label class="field">
+            <span>Cuéntanos un poco</span>
+            <textarea name="mensaje" rows="3" placeholder="¿Qué te gustaría lograr con tu sitio?"></textarea>
+          </label>
+          <button class="btn btn--primary btn--lg btn--block magnetic" type="submit">
+            Enviar por WhatsApp
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form__error" role="alert" hidden>Escribe tu nombre para continuar.</p>
+          <p class="form__privacy">Tus datos solo se usan para responderte.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__brand">
+        <span class="footer__wordmark" role="img" aria-label="ZUNO"></span>
+        <p class="footer__slogan">Tu visión, nuestro código.</p>
+        <p class="footer__acro mono">Zona de Utilidad, Navegación y Organización</p>
+      </div>
+      <nav class="footer__nav" aria-label="Pie de página">
+        <a href="#servicios">Servicios</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="footer__base">
+        <p>© <span data-year>2026</span> ZUNO · Desarrollo web y diseño · 100% en línea</p>
+        <a href="#inicio" class="footer__top">Volver arriba ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
+     href="https://wa.me/528715222154?text=Hola%20ZUNO%20%F0%9F%91%8B%20Me%20interesa%20cotizar%20una%20p%C3%A1gina%20web%20para%20mi%20negocio.%20%C2%BFMe%20pueden%20dar%20informaci%C3%B3n%3F">
+    <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.6L.3 23.7l6.3-1.6A11.8 11.8 0 0 0 20.5 3.5zM12 21.6c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.6zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.3-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg>
+  </a>
+
+  <script defer src="lib/manifest.js?v=20261016c"></script>
+  <script defer src="main.js?v=20261016c"></script>
+</body>
+</html>

@@ -86,7 +86,7 @@ function z_rate($bucket, $perMin, $perDay, $globalDay = 0) {
 // Llama a Gemini probando varios modelos (capa gratuita). Devuelve [texto, error].
 function z_gemini($payload, $models, $timeout = 30) {
   $key = z_read_secret('gemini_api_key');
-  if ($key === '' || strpos($key, 'AIza') !== 0) return [null, 'sin_clave'];
+  if (strlen($key) < 20) return [null, 'sin_clave'];
   if (!function_exists('curl_init')) return [null, 'sin_curl'];
   $last = '';
   foreach ($models as $model) {

@@ -23,7 +23,7 @@ $msg = ''; $tone = 'info';
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
   if (isset($_POST['gemini'])) {
     $k = trim((string) $_POST['gemini']);
-    if (strpos($k, 'AIza') !== 0) { $msg = 'La clave de Gemini debe empezar por «AIza».'; $tone = 'warn'; }
+    if (!preg_match('/^[A-Za-z0-9._\-]{20,200}$/', $k)) { $msg = 'Esa clave no parece válida. Cópiala completa desde AI Studio.'; $tone = 'warn'; }
     elseif (!gemini_valid($k)) { $msg = 'Google no aceptó esa clave. Revísala en AI Studio.'; $tone = 'warn'; }
     elseif (z_write_secret('gemini_api_key', $k)) { $msg = '✅ Clave de Gemini activada. El asistente y el lector de recibos ya funcionan.'; $tone = 'ok'; }
     else { $msg = 'La clave es válida pero no se pudo guardar (permisos de la carpeta).'; $tone = 'warn'; }
@@ -38,7 +38,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     elseif (z_write_secret('aviso_email', $k)) { $msg = '✅ Te avisaremos de cada cliente nuevo en ese correo.'; $tone = 'ok'; }
   }
 }
-$gSet = strpos(z_read_secret('gemini_api_key'), 'AIza') === 0;
+$gSet = strlen(z_read_secret('gemini_api_key')) >= 20;
 $mSet = z_read_secret('mp_access_token') !== '';
 $aSet = z_read_secret('aviso_email') !== '';
 $t = htmlspecialchars($given, ENT_QUOTES, 'UTF-8');
@@ -62,8 +62,8 @@ button{margin-top:8px;width:100%;padding:11px;border:0;border-radius:999px;backg
 <p class="sub">Las claves se guardan en el servidor, fuera de la carpeta pública, y nunca se muestran a los visitantes.</p>
 <?php if ($msg): ?><div class="msg <?= $tone ?>"><?= htmlspecialchars($msg, ENT_QUOTES, 'UTF-8') ?></div><?php endif; ?>
 <div class="card"><h2>IA de Google (Gemini) <span class="pill <?= $gSet ? 'ok' : '' ?>"><?= $gSet ? 'Activa' : 'Pendiente' ?></span></h2>
-<p class="hint">Clave gratis en <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> (empieza por <code>AIza</code>). Puedes reemplazarla cuando quieras.</p>
-<form method="post" autocomplete="off"><input type="hidden" name="t" value="<?= $t ?>"><input name="gemini" type="password" placeholder="AIza…" required><button>Guardar clave de Gemini</button></form></div>
+<p class="hint">Clave gratis en <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> (empieza por <code>AIza</code> o <code>AQ.</code>). Puedes reemplazarla cuando quieras.</p>
+<form method="post" autocomplete="off"><input type="hidden" name="t" value="<?= $t ?>"><input name="gemini" type="password" placeholder="AIza… o AQ.…" required><button>Guardar clave de Gemini</button></form></div>
 <div class="card"><h2>Mercado Pago <span class="pill <?= $mSet ? 'ok' : '' ?>"><?= $mSet ? 'Activo' : 'Pendiente' ?></span></h2>
 <p class="hint">Access token de producción (Tus integraciones → Credenciales). Empieza por <code>APP_USR-</code>.</p>
 <form method="post" autocomplete="off"><input type="hidden" name="t" value="<?= $t ?>"><input name="mp" type="password" placeholder="APP_USR-…" required><button>Guardar token</button></form></div>

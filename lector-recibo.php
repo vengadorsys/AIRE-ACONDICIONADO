@@ -7,7 +7,7 @@ require __DIR__ . '/_core.php';
 function fail($reason) { z_json(['ok' => false, 'reason' => $reason]); }
 
 z_guard_post();
-if (z_read_secret('gemini_api_key') === '') fail('sin_clave');
+if (strlen(z_read_secret('gemini_api_key')) < 20) fail('sin_clave');
 
 $MAX = 10 * 1024 * 1024;
 if (empty($_FILES['recibo']) || !is_uploaded_file($_FILES['recibo']['tmp_name'] ?? '')) fail('sin_archivo');
@@ -55,11 +55,11 @@ $payload = [
       ['text' => $INSTR],
     ],
   ]],
-  'generationConfig' => ['temperature' => 0.1, 'maxOutputTokens' => 600, 'responseMimeType' => 'application/json'],
+  'generationConfig' => ['temperature' => 0.1, 'maxOutputTokens' => 2048, 'responseMimeType' => 'application/json'],
 ];
 unset($bytes);
 
-list($text, $err) = z_gemini($payload, ['gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.5-flash-lite', 'gemini-flash-lite-latest'], 45);
+list($text, $err) = z_gemini($payload, ['gemini-flash-latest', 'gemini-3.5-flash', 'gemini-flash-lite-latest', 'gemini-2.5-flash'], 45);
 if ($text === null) fail($err === 'sin_clave' ? 'sin_clave' : 'ia');
 
 $s = trim(preg_replace(['/^```(?:json)?/i', '/```$/'], '', trim($text)));

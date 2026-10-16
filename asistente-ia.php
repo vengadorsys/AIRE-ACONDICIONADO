@@ -13,7 +13,7 @@ $message = trim((string) ($in['message'] ?? ''));
 $history = is_array($in['history'] ?? null) ? array_slice($in['history'], -8) : [];
 if ($message === '' || mb_strlen($message) > 500) z_json(['reply' => 'Escríbeme tu pregunta en un mensaje corto, por favor.'], 400);
 
-if (z_read_secret('gemini_api_key') === '') {
+if (strlen(z_read_secret('gemini_api_key')) < 20) {
   reply("El asistente se está configurando en este momento. Mientras tanto, usa la **calculadora** (#calculadora) para saber qué minisplit necesitas, o escríbenos por WhatsApp y te atiende una persona.");
 }
 
@@ -36,7 +36,7 @@ $contents[] = ['role' => 'user', 'parts' => [['text' => $message]]];
 $payload = [
   'system_instruction' => ['parts' => [['text' => $system]]],
   'contents'           => $contents,
-  'generationConfig'   => ['temperature' => 0.4, 'topP' => 0.9, 'maxOutputTokens' => 900],
+  'generationConfig'   => ['temperature' => 0.4, 'topP' => 0.9, 'maxOutputTokens' => 2048],
   'safetySettings'     => [
     ['category' => 'HARM_CATEGORY_HARASSMENT',        'threshold' => 'BLOCK_ONLY_HIGH'],
     ['category' => 'HARM_CATEGORY_HATE_SPEECH',       'threshold' => 'BLOCK_ONLY_HIGH'],
@@ -45,6 +45,6 @@ $payload = [
   ],
 ];
 
-list($text, $err) = z_gemini($payload, ['gemini-2.5-flash-lite', 'gemini-flash-lite-latest', 'gemini-2.5-flash', 'gemini-flash-latest'], 25);
+list($text, $err) = z_gemini($payload, ['gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-2.5-flash-lite'], 25);
 if ($text === null) reply('Ahora mismo no puedo responder. Escríbenos por WhatsApp y te atiende una persona enseguida.');
 reply(trim($text));

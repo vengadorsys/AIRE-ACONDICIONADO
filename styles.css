@@ -347,13 +347,13 @@ h2 em { color: var(--jade); }
 .member__badge { position: absolute; left: 18px; bottom: 16px; padding: 6px 10px; border-radius: 8px; background: rgba(0,0,0,.45); border: 1px solid var(--line-2); color: var(--muted); backdrop-filter: blur(6px); }
 .member__body { padding: 30px 32px 34px; }
 .member__role { color: var(--jade); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }
-.member:nth-of-type(2) .member__role, .team > .member:last-child .member__role { color: var(--amber); }
+.member--dev .member__role { color: var(--amber); }
 .member h3 { font: 600 clamp(32px, 3.2vw, 44px)/1 var(--f-body); letter-spacing: -.04em; margin-bottom: 16px; }
 .member__bio { color: var(--muted); font-size: 16px; }
 .member__skills { list-style: none; padding: 0; margin: 22px 0 26px; display: grid; gap: 10px; }
 .member__skills li { display: flex; gap: 12px; align-items: center; font-size: 15px; }
 .member__skills li::before { content: ""; flex: none; width: 18px; height: 1px; background: var(--jade); }
-.team > .member:last-child .member__skills li::before { background: var(--amber); }
+.member--dev .member__skills li::before { background: var(--amber); }
 .member__links { display: flex; gap: 10px; }
 .member__links a { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--line-2); transition: border-color .3s, background .3s, transform .3s var(--ease); }
 .member__links a:hover { border-color: var(--jade); background: rgba(62,230,166,.08); transform: translateY(-3px); }

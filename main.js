@@ -336,6 +336,106 @@
     form.nombre.addEventListener("input", function () { if (form.nombre.value.trim()) err.hidden = true; });
   });
 
+  /* ---------- Projects slider with live previews ---------- */
+  safe("work", function () {
+    var stage = document.querySelector("[data-work]");
+    if (!stage) return;
+    var slides = stage.querySelectorAll(".work__slide");
+    var infos = stage.querySelectorAll(".work__info");
+    var dotsWrap = document.querySelector(".work__dots");
+    var dots = dotsWrap.querySelectorAll(".work__dot");
+    var urlEl = stage.querySelector("[data-url]");
+    var viewport = stage.querySelector(".work__viewport");
+    var current = 0, started = false, hovering = false;
+
+    function fit(frame) {
+      var ifr = frame.querySelector("iframe");
+      if (!ifr) return;
+      var cw = frame.clientWidth, ch = frame.clientHeight;
+      var base = cw < 600 ? 420 : 1440;
+      var s = cw / base;
+      ifr.style.width = base + "px";
+      ifr.style.height = Math.ceil(ch / s) + "px";
+      ifr.style.setProperty("--s", s.toFixed(4));
+    }
+    function load(i) {
+      var frame = slides[i] && slides[i].querySelector(".work__frame");
+      if (!frame || frame.querySelector("iframe")) return;
+      var ifr = document.createElement("iframe");
+      ifr.title = "Vista previa en vivo: " + infos[i].querySelector("h3").textContent;
+      ifr.loading = "lazy";
+      ifr.setAttribute("tabindex", "-1");
+      ifr.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+      ifr.addEventListener("load", function () {
+        ifr.classList.add("is-loaded");
+        // warm up the next one once this is ready
+        load((i + 1) % slides.length);
+      });
+      ifr.src = frame.getAttribute("data-src");
+      frame.appendChild(ifr);
+      fit(frame);
+    }
+    function restartDot(d) {
+      var bar = d.querySelector("span");
+      d.classList.remove("is-active");
+      void bar.offsetWidth;
+      d.classList.add("is-active");
+    }
+    function go(i) {
+      current = (i + slides.length) % slides.length;
+      for (var k = 0; k < slides.length; k++) {
+        var on = k === current;
+        slides[k].classList.toggle("is-active", on);
+        infos[k].classList.toggle("is-active", on);
+        dots[k].classList.toggle("is-done", k < current);
+        dots[k].setAttribute("aria-selected", on ? "true" : "false");
+        if (!on) dots[k].classList.remove("is-active");
+      }
+      restartDot(dots[current]);
+      urlEl.textContent = slides[current].querySelector(".work__frame").getAttribute("data-src").replace(/^https?:\/\//, "").split(/[/?#]/)[0];
+      stage.classList.remove("is-interactive");
+      if (started) load(current);
+    }
+    function setPaused(p) { dotsWrap.classList.toggle("is-paused", p); }
+
+    // Auto-advance when the active progress bar finishes
+    dotsWrap.addEventListener("animationend", function (e) {
+      if (e.target.closest(".work__dot.is-active")) go(current + 1);
+    });
+    Array.prototype.forEach.call(dots, function (d) {
+      d.addEventListener("click", function () { go(+d.getAttribute("data-go")); });
+    });
+    stage.querySelector("[data-prev]").addEventListener("click", function () { go(current - 1); });
+    stage.querySelector("[data-next]").addEventListener("click", function () { go(current + 1); });
+
+    // Hover pauses; click on the preview lets the visitor scroll inside it
+    stage.addEventListener("pointerenter", function () { hovering = true; setPaused(true); });
+    stage.addEventListener("pointerleave", function () { hovering = false; stage.classList.remove("is-interactive"); setPaused(false); });
+    viewport.addEventListener("click", function () { stage.classList.add("is-interactive"); setPaused(true); });
+
+    window.addEventListener("resize", function () {
+      Array.prototype.forEach.call(stage.querySelectorAll(".work__frame"), fit);
+    });
+
+    // Only start loading heavy previews when the section is near the viewport
+    function start() {
+      if (started) return;
+      started = true;
+      load(current);
+      restartDot(dots[current]);
+    }
+    setPaused(true);
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (en) {
+        en.forEach(function (x) {
+          if (x.isIntersecting) { start(); if (!hovering) setPaused(false); }
+          else setPaused(true);
+        });
+      }, { rootMargin: "300px 0px" });
+      io.observe(stage);
+    } else { start(); setPaused(false); }
+  });
+
   /* ---------- Pending profile links ---------- */
   safe("pending", function () {
     Array.prototype.forEach.call(document.querySelectorAll("[data-pending]"), function (a) {

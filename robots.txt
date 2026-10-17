@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zunoo.com.mx/sitemap.xml

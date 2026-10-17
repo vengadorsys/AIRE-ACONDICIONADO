@@ -357,6 +357,10 @@ h2 em { color: var(--jade); }
   opacity: 0; transition: opacity .6s var(--ease);
 }
 .work__frame iframe.is-loaded { opacity: 1; }
+.work__gallery { background: #0b0e0e; cursor: pointer; }
+.work__gallery img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.12); transition: opacity 1.2s var(--ease), transform 6s linear; }
+.work__gallery img.is-on { opacity: 1; transform: scale(1); }
+.work__gallery::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,.45)); pointer-events: none; }
 .work__stage.is-interactive .work__frame iframe { pointer-events: auto; }
 .work__viewport::after {
   content: "Clic para explorar"; position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
@@ -365,6 +369,7 @@ h2 em { color: var(--jade); }
   transition: opacity .3s;
 }
 .work__stage.is-interactive .work__viewport::after { opacity: 0; }
+.work__stage.is-gallery .work__viewport::after { content: "Clic para abrir el sitio ↗"; }
 .work__side { position: relative; display: grid; }
 .work__info {
   grid-area: 1 / 1; display: flex; flex-direction: column; padding: clamp(24px, 3vw, 36px);

@@ -358,8 +358,23 @@
       ifr.style.height = Math.ceil(ch / s) + "px";
       ifr.style.setProperty("--s", s.toFixed(4));
     }
+    // Sites that forbid being framed get an animated photo gallery instead
+    var galTimer = null;
+    function gallery(i) {
+      clearInterval(galTimer);
+      var g = slides[i] && slides[i].querySelector("[data-gallery]");
+      if (!g) return;
+      var pics = g.querySelectorAll("img"), n = 0;
+      galTimer = setInterval(function () {
+        if (dotsWrap.classList.contains("is-paused") && !hovering) return;
+        pics[n].classList.remove("is-on");
+        n = (n + 1) % pics.length;
+        pics[n].classList.add("is-on");
+      }, 2200);
+    }
     function load(i) {
       var frame = slides[i] && slides[i].querySelector(".work__frame");
+      if (frame && frame.hasAttribute("data-gallery")) { load((i + 1) % slides.length); return; }
       if (!frame || frame.querySelector("iframe")) return;
       var ifr = document.createElement("iframe");
       ifr.title = "Vista previa en vivo: " + infos[i].querySelector("h3").textContent;
@@ -394,7 +409,8 @@
       restartDot(dots[current]);
       urlEl.textContent = slides[current].querySelector(".work__frame").getAttribute("data-src").replace(/^https?:\/\//, "").split(/[/?#]/)[0];
       stage.classList.remove("is-interactive");
-      if (started) load(current);
+      stage.classList.toggle("is-gallery", !!slides[current].querySelector("[data-gallery]"));
+      if (started) { load(current); gallery(current); }
     }
     function setPaused(p) { dotsWrap.classList.toggle("is-paused", p); }
 
@@ -411,7 +427,11 @@
     // Hover pauses; click on the preview lets the visitor scroll inside it
     stage.addEventListener("pointerenter", function () { hovering = true; setPaused(true); });
     stage.addEventListener("pointerleave", function () { hovering = false; stage.classList.remove("is-interactive"); setPaused(false); });
-    viewport.addEventListener("click", function () { stage.classList.add("is-interactive"); setPaused(true); });
+    viewport.addEventListener("click", function () {
+      var f = slides[current].querySelector(".work__frame");
+      if (f.hasAttribute("data-gallery")) { window.open(f.getAttribute("data-src"), "_blank", "noopener"); return; }
+      stage.classList.add("is-interactive"); setPaused(true);
+    });
 
     window.addEventListener("resize", function () {
       Array.prototype.forEach.call(stage.querySelectorAll(".work__frame"), fit);
@@ -422,6 +442,7 @@
       if (started) return;
       started = true;
       load(current);
+      gallery(current);
       restartDot(dots[current]);
     }
     setPaused(true);
